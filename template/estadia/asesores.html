@@ -1,0 +1,63 @@
+{% extends 'base_app.html'%}
+{% block titulo%}Asesores{% endblock titulo%}
+{%block centro%}
+<h1 align="center">Listado de los Asesores</h1>
+
+<!-- Sidebar Separator do not remove -->
+<div id="da-sidebar-separator"></div>
+<!-- Content Area -->
+<div id="da-content-area">
+    <div id="da-header-bottom">
+        <div class="da-container clearfix">
+            <div id="da-search">
+                <form action="##" method="get">
+                    <input type="text" class="search-query" name="q" placeholder="Buscar..">
+                </form>
+            </div>
+            <div id="da-breadcrumb">
+                <ul>
+                    <li><a href="{%url 'u-app:asesores'%}"><i class="icol-add"></i> Agregar</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+       	<div class="span12">
+            <div class="da-panel collapsible">
+                <div class="da-panel-header">
+                    <span class="da-panel-title">
+                        <i class="icol-grid"></i>
+                        Tabla de los Asesores
+                    </span>
+                </div>
+                <div class="da-panel-content da-table-container">
+                    <table class="da-table checkable">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Correo Electronico</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for asesor in object_list %}
+                            <tr>
+                                <td>{{asesor.nombre}}</td>
+                                 <td>{{asesor.apellidos}}</td>
+                                <td>{{asesor.correo}}</td>
+                                <td>{{asesor.tipo}}</td>
+                                <td class="da-icon-column">
+                                    <a href="{% url 'u-app:editAsesor' asesor.id %}"><i class="icol-pencil"></i></a>
+                                    <a href="{% url 'u-app:elimAsesor' asesor.id %}"><i class="icol-cross"></i></a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock centro%}

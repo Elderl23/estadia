@@ -1,0 +1,28 @@
+{% extends "base_app.html" %}
+{% block titulo %}
+	Eliminar datos
+{% endblock titulo %}
+{% block centro%}
+<div class="row-fluid">
+    <div class="span8">
+        <div class="da-panel">
+            <div class="da-panel-header">
+                <span class="da-panel-title">
+                    <i class="icol-cross"></i>
+                        Eliminar
+                </span>
+            </div>     
+            <div class="da-panel-content">
+                <form action="" method="post" id="da-ex-validate1" class="da-form">{% csrf_token %}
+                	<h3>Desea eliminar el elemento:</h3>
+                	<h4>{{ object }}</h4>
+                	<div class="btn-row">
+						<input type="submit" value="Aceptar" class="btn btn-success">
+						<a href="{% url 'u-app:inicio'%}" class="btn btn-success">Cancelar</a>
+					</div>
+				</form> 
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock centro%}

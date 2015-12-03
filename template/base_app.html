@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="es-MX"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="es-MX"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="es-MX"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="es-MX"><!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+
+{% load staticfiles %}
+<!-- Bootstrap Stylesheet -->
+<link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css"%}" media="screen">
+
+<!-- Theme Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/css/dandelion.theme.css"%}" media="screen">
+<!-- Icon Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/css/fonts/glyphicons/style.css"%}" media="screen">
+<!--  Main Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/css/dandelion.css"%}" media="screen">
+<!-- Demo Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/css/demo.css"%}" media="screen">
+
+<!-- Plugin Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/js/plugins/wizard/dandelion.wizard.css"%}" media="screen">
+
+<title>{% block titulo %} {% endblock titulo %}</title>
+
+</head>
+<body>
+<div id="da-wrapper">
+        <!-- Header -->
+        <div id="da-header">
+            <div id="da-header-top">
+                <!-- Container -->
+                <div class="da-container clearfix">
+
+                    <!-- Logo Container. All images put here will be vertically centere -->
+                    <div id="da-logo-wrap">
+                        <div id="da-logo">
+                            <div id="da-logo-img">
+                                <a href="{%url 'u-app:inicio'%}">
+                                  <h2 >Universidad de Tabasco</h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Header Toolbar Menu -->
+                    <div id="da-header-toolbar" class="clearfix">
+                        <div id="da-user-profile-wrap">
+                            <div id="da-user-profile" data-toggle="dropdown" class="clearfix">
+                                <div id="da-user-avatar">
+                                    <h3 style="color:red"> {{user.username}}</h3>
+                                </div>
+                                <div id="da-user-info">
+                                    Administrador
+                                    <span class="da-user-title"></span>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="{%url 'u-app:inicio'%}">Inicio</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{%url 'u-app:inicio'%}">Profile</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Change Password</a></li>
+                            </ul>
+                        </div>
+                        <div id="da-header-button-container">
+                            <ul>
+                                <li class="da-header-button-wrap">
+                                    <div class="da-header-button">
+                                        <a href="{% url 'u-app:salir' %}"><i class="icon-power"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- Container -->
+        <div id="da-content">
+            <!-- Container -->
+            <div class= "da-container clearfix">
+
+                <!-- Sidebar Separator do not remove -->
+                <div id="da-sidebar-separator"></div>
+
+                <!-- Sidebar -->
+                <div id="da-sidebar">
+
+                    <!-- Navigation Toggle for < 480px -->
+                    <div id="da-sidebar-toggle"></div>
+
+                    <!-- Main Navigation- Cuadro de menu -->
+                    <div id="da-main-nav" class="btn-container">
+                        <ul>
+                            <li class="active">
+                                <a href="{%url 'u-app:inicio'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-home"></i>
+                                    </span>
+                                    Inicio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listAlumnos'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-parents"></i>
+                                    </span>
+                                    Alumnos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listAsesores'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-user"></i>
+                                    </span>
+                                    Asesores
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listCategorias'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-signal"></i>
+                                    </span>
+                                    Categoria
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listCiclos'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-clock"></i>
+                                    </span>
+                                    Ciclos Escolares
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listProyectos'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-adress-book"></i>
+                                    </span>
+                                    Proyectos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Content Wrapper -->
+                <div id="da-content-wrap" class="clearfix">
+
+                    <!-- Content Area -->
+                    <div id="da-content-area">
+                        {% block centro %} {% endblock centro%}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="da-footer">
+            <div class="da-container clearfix">
+                <p>Administrador de la bibloteca virtual</p>
+            </div>
+        </div>
+    </div>
+   <!-- JS Libs -->
+    <script src="{% static "assets/js/libs/jquery-1.8.3.min.js"%}"></script>
+    <script src="{% static "assets/js/libs/jquery.placeholder.min.js"%}"></script>
+    <script src="{% static "assets/js/libs/jquery.mousewheel.min.js"%}"></script>
+
+    <!-- JS Bootstrap -->
+    <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
+
+    <!-- jQuery-UI JavaScript Files -->
+    <script src="{% static "assets/jui/js/jquery-ui-1.9.2.min.js"%}"></script>
+    <script src="{% static "assets/jui/jquery.ui.timepicker.min.js"%}"></script>
+    <script src="{% static "assets/jui/jquery.ui.touch-punch.min.js"%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/jui/css/jquery.ui.all.css"%}" media="screen">
+
+    <link rel="stylesheet" href="{% static "plugins/elrte/css/elrte.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "plugins/elfinder/css/elfinder.css" %}" media="screen">
+
+    <!-- JS Plugins -->
+
+    <!-- Validation Plugin -->
+    <script src="{% static "plugins/validate/jquery.validate.js"%}"></script>
+    <script src="{% static "plugins/validate/jquery.validate.min.js" %}"></script>
+
+    <!-- Flot Plugin -->
+    <!--[if lt IE 9]>
+    <script src="{% static "assets/js/libs/excanvas.min.js" %}"></script>
+    <![endif]-->
+    <script src="{% static "plugins/flot/jquery.flot.min.js" %}"></script>
+    <script src="{% static "plugins/flot/plugins/jquery.flot.tooltip.min.js" %}"></script>
+    <script src="{% static "plugins/flot/plugins/jquery.flot.resize.min.js" %}"></script>
+
+    <!-- Circular Stat Plugin -->
+    <script src="{% static "assets/js/plugins/circularstat/dandelion.circularstat.min.js" %}"></script>
+
+    <!-- jGrowl Plugin -->
+    <script src="{% static "plugins/jgrowl/jquery.jgrowl.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "plugins/jgrowl/jquery.jgrowl.css" %}" media="screen">
+
+
+    <!-- Wizard Plugin -->
+    <script src="{% static "assets/js/plugins/wizard/dandelion.wizard.min.js" %}"></script>
+    <script src="{% static "assets/js/libs/jquery.form.min.js" %}"></script>
+
+    <!-- Fullcalendar Plugin -->
+    <script src="{% static "plugins/fullcalendar/fullcalendar.min.js" %}"></script>
+    <script src="{% static "plugins/fullcalendar/gcal.js" %}"></script>
+    <link rel="stylesheet" href="{% static "plugins/fullcalendar/fullcalendar.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "plugins/fullcalendar/fullcalendar.print.css" %}" media="print">
+
+    <!-- JS Demo -->
+    <script src="{% static "assets/js/demo/demo.dashboard.js" %}"></script>
+    <script src="{% static "assets/js/demo/demo.ui.js" %}"></script>
+    <script src="{% static "assets/js/demo/demo.validation.js"%}"></script>
+
+    <!-- JS Template -->
+    <script src="{% static "assets/js/core/dandelion.core.js" %}"></script>
+
+    <!-- JS Customizer -->
+    <script src="{% static "assets/js/core/dandelion.customizer.js" %}"></script>
+
+</body>
+</html>

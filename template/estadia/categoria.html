@@ -1,0 +1,59 @@
+{% extends 'base_app.html'%}
+{% block titulo%}Categorias{% endblock titulo%}
+{%block centro%}
+<h1 align="center">Listado de las Categorias</h1>
+
+<!-- Sidebar Separator do not remove -->
+<div id="da-sidebar-separator"></div>
+<!-- Content Area -->
+<div id="da-content-area">
+    <div id="da-header-bottom">
+        <div class="da-container clearfix">
+            <div id="da-search">
+                <form action="##" method="get">
+                    <input type="text" class="search-query" name="q" placeholder="Buscar..">
+                </form>
+            </div>
+            <div id="da-breadcrumb">
+                <ul>
+                    <li><a href="{%url 'u-app:categorias'%}"><i class="icol-add"></i> Agregar</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+       	<div class="span12">
+            <div class="da-panel collapsible">
+                <div class="da-panel-header">
+                    <span class="da-panel-title">
+                        <i class="icol-grid"></i>
+                        Tabla de los Categorias de proyectos
+                    </span>
+                </div>
+                <div class="da-panel-content da-table-container">
+                    <table class="da-table checkable">
+                        <thead>
+                            <tr>
+                                <th>Tipos</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for categoria in object_list %}
+                            <tr>
+                                <td>{{categoria.tipo}}</td>
+                                 <td>{{categoria.descripcion}}</td>
+                                <td class="da-icon-column">
+                                    <a href="{% url 'u-app:editCategorias' categoria.id %}"><i class="icol-pencil"></i></a>
+                                    <a href="{% url 'u-app:elimCategorias' categoria.id %}"><i class="icol-cross"></i></a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock centro%}

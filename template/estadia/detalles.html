@@ -1,0 +1,33 @@
+{% extends 'base_app.html'%}
+{% block titulo%}Detalles{% endblock titulo%}
+{%block centro%}
+<form action="" method="post" id="da-ex-validate1" class="da-form">{% csrf_token%}
+    <div class="row-fluid">
+        <div class="span8">
+            <div class="da-panel">
+                <div class="da-panel-header">
+                    <span class="da-panel-title">
+                        <i class="icol-blog"></i>
+                        Detalles
+                    </span>
+                </div>
+                <div class="da-panel-toolbar">
+                    <div class="btn-toolbar">
+                        <div class="btn-group" aling="center">
+                            <a><input class="btn" type="submit" name="btn_ed" value="Guardar"></a>
+                        </div>
+                    </div>
+                </div>      
+                <div class="da-panel-content da-table-container">
+                    <table class="da-table da-detail-view">
+
+                        <tbody>
+                            {{ form.as_p }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{%endblock centro%}

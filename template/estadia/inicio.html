@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="es"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="es"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="es"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+{% load staticfiles %}
+<!-- Bootstrap Stylesheet -->
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}" media="screen">
+<!-- Theme Stylesheet -->
+<link rel="stylesheet" href="{% static 'assets/css/dandelion.theme.css'%}" media="screen">
+<!--  Fluid Grid System -->
+<link rel="stylesheet" href="{% static "assets/css/fluid.css"%}" media="screen">
+<!-- Login Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/css/form.css"%}" media="screen">
+<link rel="stylesheet" href="{% static "assets/css/login.css"%}" media="screen">
+<link rel="stylesheet" href="{% static "plugins/zocial/zocial.css"%}" media="screen">
+<!-- Icon Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/css/fonts/glyphicons/style.css"%}" media="screen">
+<!--  Main Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/css/dandelion.css"%}" media="screen">
+<!-- Demo Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/css/demo.css"%}" media="screen">
+<!-- Plugin Stylesheet -->
+<link rel="stylesheet" href="{% static "assets/js/plugins/wizard/dandelion.wizard.css"%}" media="screen">
+<title>Sesion</title>
+</head>
+
+<body>
+
+{% if user.is_authenticated %}
+    <div id="da-wrapper">
+        <!-- Header -->
+        <div id="da-header">
+            <div id="da-header-top">
+                <!-- Container -->
+                <div class="da-container clearfix">
+
+                    <!-- Logo Container. All images put here will be vertically centere -->
+                    <div id="da-logo-wrap">
+                        <div id="da-logo">
+                            <div id="da-logo-img">
+                                <a href="{%url 'u-app:inicio'%}">
+                                  <h2 >Universidad de Tabasco</h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Header Toolbar Menu -->
+                    <div id="da-header-toolbar" class="clearfix">
+                        <div id="da-user-profile-wrap">
+                            <div id="da-user-profile" data-toggle="dropdown" class="clearfix">
+                                <div id="da-user-avatar">
+                                    <h3 style="color:red"> {{user.username}}</h3>
+                                </div>
+                                <div id="da-user-info">
+                                    Administrador
+                                    <span class="da-user-title"></span>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="{%url 'u-app:inicio'%}">Inicio</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{%url 'u-app:inicio'%}">Profile</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Change Password</a></li>
+                            </ul>
+                        </div>
+                        <div id="da-header-button-container">
+                            <ul>
+                                <li class="da-header-button-wrap">
+                                    <div class="da-header-button">
+                                        <a href="{% url 'u-app:salir' %}"><i class="icon-power"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- Container -->
+        <div id="da-content">
+            <!-- Container -->
+            <div class= "da-container clearfix">
+                
+                <!-- Sidebar Separator do not remove -->
+                <div id="da-sidebar-separator"></div>
+                
+                <!-- Sidebar -->
+                <div id="da-sidebar">
+
+                    <!-- Navigation Toggle for < 480px -->
+                    <div id="da-sidebar-toggle"></div>
+                
+                    <!-- Main Navigation- Cuadro de menu -->
+                    <div id="da-main-nav" class="btn-container">
+                        <ul>
+                            <li class="active">
+                                <a href="{%url 'u-app:inicio'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-home"></i>
+                                    </span>
+                                    Inicio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listAlumnos'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-parents"></i>
+                                    </span>
+                                    Alumnos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listAsesores'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-user"></i>
+                                    </span>
+                                    Asesores
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listCategorias'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-signal"></i>
+                                    </span>
+                                    Categoria
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listCiclos'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-clock"></i>
+                                    </span>
+                                    Ciclos Escolares
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'u-app:listProyectos'%}">
+                                    <!-- Icon Container -->
+                                    <span class="da-nav-icon">
+                                        <i class="icon-adress-book"></i>
+                                    </span>
+                                    Proyectos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Main Content Wrapper -->
+                <div id="da-content-wrap" class="clearfix">
+                
+                    <!-- Content Area -->
+                    <div id="da-content-area">
+                        {% block centro %}
+                        <img src="assets/images/logo.ico">
+                        {% endblock centro%}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="da-footer">
+            <div class="da-container clearfix">
+                <p>Administrador de la bibloteca virtual</p>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+        <div id="da-home-wrap">
+        <div id="da-home-wrap-inner">
+            <div id="da-home-inner">
+                <div id="da-home-box">
+                    <div id="da-home-box-header">
+                        <span class="da-home-box-title">Inicio de Sesion</span>
+                    </div>
+                    <form class="da-form da-home-form" method="post" action="">{% csrf_token %}
+                        <div class="da-form-row">
+                            <div class=" da-home-form-big">
+                                <input type="text" name="username" id="da-login-username" placeholder="Usuario">
+                            </div>
+                            <div class=" da-home-form-big">
+                                <input type="password" name="password" id="da-login-password" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <div class="da-home-form-btn-big">
+                            <input type="submit" value="Entrar" id="da-login-submit" class="btn btn-danger btn-block">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+	
+    <!-- JS Libs -->
+    <script src="{% static "assets/js/libs/jquery-1.8.3.min.js"%}"></script>
+    <script src="{% static "assets/js/libs/jquery.placeholder.min.js"%}"></script>
+    <script src="{% static "plugins/validate/jquery.validate.min.js"%}"></script>
+    <!-- JS Login -->
+    <script src="{% static "assets/js/core/dandelion.login.js"%}"></script>
+    <!-- JS Template -->
+    <script src="{% static "assets/js/core/dandelion.core.js" %}"></script>
+</body>
+</html>
