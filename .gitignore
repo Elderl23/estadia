@@ -1,0 +1,14 @@
+.idea/
+apps/estadia/migrations/
+
+# sublimetext
+/*.sublime-project
+*.sublime-workspace
+
+#python
+*.pyc
+*.swp
+
+*.sh
+
+*~
