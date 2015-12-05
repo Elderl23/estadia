@@ -72,10 +72,10 @@ TEMPLATE_DIRS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME'    : 'appEstadia',
-        'USER'    : 'postgres',
-        'PASSWORD':'xv',
-        'HOST':'localhost',
+        'NAME'    : 'd5ug66cu689l1g',
+        'USER'    : 'fzwjmweaebgzqv',
+        'PASSWORD':'E_r2sChKMcTpG5NEhmwVOndmZC',
+        'HOST':'ec2-107-21-219-142.compute-1.amazonaws.com',
         'PORT':'5432',
     }
 }
