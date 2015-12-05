@@ -10,10 +10,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from unipath import Path
+#from unipath import Path
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Path(__file__).ancestor(2)
-PROYECT_ROOT = os.path.dirname(os.path.dirname(__file__))
+PROYECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -62,8 +62,7 @@ ROOT_URLCONF = 'topicos.urls'
 WSGI_APPLICATION = 'topicos.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROYECT_ROOT, 'template'),
-    PROYECT_ROOT + 'template',
+    os.path.join(BASE_DIR, 'template'),
 )
 
 
@@ -107,12 +106,12 @@ STATIC_URL = '/static/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 STATICFILES_DIRS = [
 #BASE_DIR.child('topicos').child('static')
-os.path.join(PROYECT_ROOT, 'static'),
+os.path.join( PROYECT_ROOT, 'static'),
 ]
 
 
