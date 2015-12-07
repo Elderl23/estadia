@@ -1,0 +1,26 @@
+{% extends 'base_app.html' %}
+
+{% block centro %}
+    <table>
+        {% if alumno %}
+            {% for alumno in alumnos %}
+                {{ alumno.nombre }}
+            {% endfor %}
+
+        {% else %}
+            {% for dato in datosPro %}
+                {% for proyecto,alumno in dato.items %}
+                    <label>Nombre Proyecto:</label>
+                    {{ proyecto.titulo }} <br>
+
+                    {% for alum in alumno %}
+                        <label>Nombre Alumno</label>
+                        {{ alum.nombre }} <br>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </table>
+
+
+{% endblock %}

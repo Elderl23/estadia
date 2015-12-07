@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar</title>
+</head>
+<body>
+    {% if error %}
+        <p style="color: #1c0aff;">por favor introduce un termino de busqueda.</p>
+    {% endif %}
+    <form action="/app/busqueda/proyectoAlumnos/lista/" method="post"> {% csrf_token %}
+        <input type="text" name="buscar">
+        <input type="submit" value="Buscar">
+    </form>
+</body>
+</html>
