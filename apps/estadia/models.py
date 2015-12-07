@@ -99,7 +99,7 @@ class alumno(models.Model):
 
 class proyecto(models.Model):
     titulo = models.CharField(max_length=25)
-    alumno = models.ForeignKey(alumno)
+    alumno = models.ManyToManyField(alumno)
     asesor = models.ForeignKey(asesor)
     categoria = models.ForeignKey(categoria)
     generacion = models.ForeignKey(ciclos)
