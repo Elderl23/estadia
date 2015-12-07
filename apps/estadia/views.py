@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.db.models import Q
+from django.shortcuts import render, render_to_response
+from django.http import request, HttpResponseRedirect
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from .models import *
+# from .forms import registroProeyecto
+
 
 # Create your views here.
 class Inicio (TemplateView):
@@ -18,6 +22,16 @@ class Alumnos(CreateView):
 class listAlumnos(ListView):
 	template_name = 'estadia/alumnos.html'
 	model = alumno
+
+	def get_queryset(self):
+		buscador = self.request.GET.get('search')
+		queryset = alumno.objects.all()
+		if buscador:
+			queryset = queryset.filter(
+				Q(nombre__icontains=buscador) |
+				Q(apellidos__icontains=buscador)
+			)
+		return queryset
 
 class EditAlumnos(UpdateView):
 	template_name = 'estadia/detalles.html'
@@ -42,6 +56,17 @@ class listAsesores(ListView):
 	template_name = 'estadia/asesores.html'
 	model = asesor
 
+	def get_queryset(self):
+		buscador = self.request.GET.get('search')
+		queryset = asesor.objects.all()
+		if buscador:
+			queryset = queryset.filter(
+				Q(nombre__icontains=buscador) |
+				Q(apellidos__icontains=buscador) |
+				Q(tipo__icontains=buscador)
+			)
+		return queryset
+
 class EditAsesores(UpdateView):
 	template_name = 'estadia/detalles.html'
 	model = asesor
@@ -65,6 +90,14 @@ class listCategoria(ListView):
 	template_name = 'estadia/categoria.html'
 	model = categoria
 
+	def get_queryset(self):
+		buscador = self.request.GET.get('search')
+		queryset = categoria.objects.all()
+		if buscador:
+			queryset = queryset.filter(
+				Q(tipo__icontains=buscador)
+			)
+		return queryset
 class EditCategoria(UpdateView):
 	template_name = 'estadia/detalles.html'
 	model = categoria
@@ -88,6 +121,17 @@ class listCiclos(ListView):
 	template_name = 'estadia/ciclos.html'
 	model = ciclos
 
+	def get_queryset(self):
+		buscador = self.request.GET.get('search')
+		queryset = ciclos.objects.all()
+		if buscador:
+			queryset = queryset.filter(
+				Q(generacion__icontains=buscador) |
+				Q(ano_ini__icontains=buscador) |
+				Q(ano_fin__icontains=buscador)
+			)
+		return queryset
+
 class EditCiclos(UpdateView):
 	template_name = 'estadia/detalles.html'
 	model = ciclos
@@ -102,15 +146,35 @@ class ElimCiclos(DeleteView):
 
 ###Proyectos###############################################################################
 
+def upload_file(request):
+	if request.method == 'POST':
+		form = registroProeyecto(request.POST, request.FILES)
+		if form.is_valid():
+			handle_uploaded_file(request.FILES['file'])
+			return HttpResponseRedirect('/success/url/')
+	else:
+		form = UploadFileForm()
+	return render_to_response('upload.html', {'form': form})
+
+
 class Proyectos(CreateView):
 	template_name = 'estadia/detalles.html'
 	model = proyecto
-	fields = ['tipo', 'descripcion']
 	success_url = reverse_lazy('u-app:listProyectos')
+
 
 class listProyectos(ListView):
 	template_name = 'estadia/proyectos.html'
 	model = proyecto
+
+	def get_queryset(self):
+		buscador = self.request.GET.get('search')
+		queryset = proyecto.objects.all()
+		if buscador:
+			queryset = queryset.filter(
+				Q(titulo__icontains=buscador)
+			)
+		return queryset
 
 class EditProyectos(UpdateView):
 	template_name = 'estadia/detalles.html'

@@ -49,6 +49,7 @@
                             </div>
                         </div>
                     </div>
+                    {% if user.is_superuser %}
                     <!-- Header Toolbar Menu -->
                     <div id="da-header-toolbar" class="clearfix">
                         <div id="da-user-profile-wrap">
@@ -155,6 +156,7 @@
                             </li>
                         </ul>
                     </div>
+                    {% endif %}
                 </div>
 
                 <!-- Main Content Wrapper -->

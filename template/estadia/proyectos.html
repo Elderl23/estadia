@@ -11,7 +11,7 @@
         <div class="da-container clearfix">
             <div id="da-search">
                 <form action="##" method="get">
-                    <input type="text" class="search-query" name="q" placeholder="Buscar..">
+                    <input type="text" class="search-query" name="search" id="search" value="{{ search }}" placeholder="Buscar..">
                 </form>
             </div>
             <div id="da-breadcrumb">
@@ -35,7 +35,6 @@
                         <thead>
                             <tr>
                                 <th>Titulo</th>
-                                <th>Alumno</th>
                                 <th>Asesor</th>
                                 <th>Categoria</th>
                                 <th>Generación</th>
@@ -43,19 +42,21 @@
                                 <th>Estatus</th>
                                 <th>Fecha de publicación</th>
                                 <th>Resumen</th>
+                                <th>Archivo</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for proyecto in object_list %}
                             <tr>
                                 <td>{{proyecto.titulo}}</td>
-                                <td>{{proyecto.alumno}}</td>
-                                <td>{{proyecto.categoria]}</td>
+                                <td>{{proyecto.asesor}}</td>
+                                <td>{{proyecto.categoria}}</td>
                                 <td>{{proyecto.generacion}}</td>
                                 <td>{{proyecto.asignatura}}</td>
                                 <td>{{proyecto.estatus}}</td>
                                 <td>{{proyecto.f_publicacion}}</td>
-                                <td>{{proyecto.resumen}}</td>
+                                <td>{{proyecto.resumenes}}</td>
+                                <td>{{proyecto.archivo}}</td>
                                 <td class="da-icon-column">
                                     <a href="{% url 'u-app:editProyectos' proyecto.id %}"><i class="icol-pencil"></i></a>
                                     <a href="{% url 'u-app:elimProyectos' proyecto.id %}"><i class="icol-cross"></i></a>
@@ -70,3 +71,19 @@
     </div>
 </div>
 {%endblock centro%}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#rpp').change(function () {
+            if (this.value != 0) {
+                window.location = '?rpp=' + this.value + '&search=' + $("#search").val();
+            }
+        });
+        $('#search').bind('keyup', function (e) {
+            var key = e.keyCode || e.which;
+            if (key === 13) {
+                window.location.href = '?rpp={{rpp}}&search=' + this.value;
+            }
+            ;
+        });
+</script>
