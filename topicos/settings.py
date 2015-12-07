@@ -10,10 +10,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from unipath import Path
-
-BASE_DIR = Path(__file__).ancestor(2)
-PROYECT_ROOT = os.path.dirname(os.path.dirname(__file__))
+#from unipath import Path
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+# Path(__file__).ancestor(2)
+PROYECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -43,7 +43,6 @@ INSTALLED_APPS = (
 )
 
 from django.core.urlresolvers import reverse_lazy
-
 LOGIN_URL = reverse_lazy('u-app:inicio')
 LOGIN_REDIRECT_URL = reverse_lazy('u-app:inicio')
 LOGOUT_URL = reverse_lazy('u-app:salir')
@@ -63,8 +62,7 @@ ROOT_URLCONF = 'topicos.urls'
 WSGI_APPLICATION = 'topicos.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROYECT_ROOT, 'template'),
-    PROYECT_ROOT + 'template',
+    os.path.join(BASE_DIR, 'template'),
 )
 
 
@@ -74,11 +72,11 @@ TEMPLATE_DIRS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'appEstadia',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME'    : 'd5ug66cu689l1g',
+        'USER'    : 'fzwjmweaebgzqv',
+        'PASSWORD':'E_r2sChKMcTpG5NEhmwVOndmZC',
+        'HOST':'ec2-107-21-219-142.compute-1.amazonaws.com',
+        'PORT':'5432',
     }
 }
 
@@ -87,7 +85,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-MX'
 
-TIME_ZONE = 'America/Mexico_City'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -99,5 +97,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR.child('topicos').child('static')]
+
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
+STATICFILES_DIRS = [
+#BASE_DIR.child('topicos').child('static')
+os.path.join( PROYECT_ROOT, 'static'),
+]
+
