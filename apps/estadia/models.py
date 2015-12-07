@@ -27,8 +27,7 @@ asignatura_choices = [
 ]
 
 Apersona = [
-    ('Asesor', 'Asesor'),
-    ('Asesor Empresarial', 'Asesor Empresarial'),
+    ('Asesor', 'Asesor')
 ]
 
 Alpersona = [
@@ -100,13 +99,13 @@ class alumno(models.Model):
 
 class proyecto(models.Model):
     titulo = models.CharField(max_length=25)
-    alumno = models.ManyToManyField(alumno)
+    alumno = models.ForeignKey(alumno)
     asesor = models.ForeignKey(asesor)
     categoria = models.ForeignKey(categoria)
     generacion = models.ForeignKey(ciclos)
     asignatura = models.CharField(max_length=30, choices=asignatura_choices)
     estatus = models.BooleanField(default=True)
-    f_publicacion = models.CharField( max_length=10)
+    fecha_publicacion = models.DateField(auto_now_add=True)
     resumenes = models.CharField(max_length=500)
     archivo = models.FileField(upload_to="archivos/", null=True, blank=True)
 

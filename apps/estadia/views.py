@@ -160,6 +160,7 @@ def upload_file(request):
 class Proyectos(CreateView):
 	template_name = 'estadia/detalles.html'
 	model = proyecto
+	#fields = ['titulo','alumnos', 'asesores', 'categoria', 'generacion', 'asignatura', 'estatus', 'resumenes', 'archivo']
 	success_url = reverse_lazy('u-app:listProyectos')
 
 
@@ -179,7 +180,6 @@ class listProyectos(ListView):
 class EditProyectos(UpdateView):
 	template_name = 'estadia/detalles.html'
 	model = proyecto
-	fields = ['tipo','descripcion']
 	success_url = reverse_lazy('u-app:listProyectos')
 
 class ElimProyectos(DeleteView):

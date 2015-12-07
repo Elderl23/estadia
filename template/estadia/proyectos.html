@@ -49,6 +49,7 @@
                             {% for proyecto in object_list %}
                             <tr>
                                 <td>{{proyecto.titulo}}</td>
+                                <td>{{proyecto.alumno}}</td>
                                 <td>{{proyecto.asesor}}</td>
                                 <td>{{proyecto.categoria}}</td>
                                 <td>{{proyecto.generacion}}</td>
@@ -56,7 +57,7 @@
                                 <td>{{proyecto.estatus}}</td>
                                 <td>{{proyecto.f_publicacion}}</td>
                                 <td>{{proyecto.resumenes}}</td>
-                                <td>{{proyecto.archivo}}</td>
+                                <td>{{proyecto.archivos}}</td>
                                 <td class="da-icon-column">
                                     <a href="{% url 'u-app:editProyectos' proyecto.id %}"><i class="icol-pencil"></i></a>
                                     <a href="{% url 'u-app:elimProyectos' proyecto.id %}"><i class="icol-cross"></i></a>
