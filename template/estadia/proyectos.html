@@ -35,6 +35,7 @@
                         <thead>
                             <tr>
                                 <th>Titulo</th>
+                                <th>Alumno(s)</th>
                                 <th>Asesor</th>
                                 <th>Categoria</th>
                                 <th>Generación</th>
@@ -43,21 +44,26 @@
                                 <th>Fecha de publicación</th>
                                 <th>Resumen</th>
                                 <th>Archivo</th>
+                                <th> </th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for proyecto in object_list %}
                             <tr>
                                 <td>{{proyecto.titulo}}</td>
-                                <td>{{proyecto.alumno}}</td>
+                                <td>
+                                {% for alumno in proyecto.alumno.all %}
+                                <li>{{alumno}}</li>
+                                {% endfor %}
+                                </td>
                                 <td>{{proyecto.asesor}}</td>
                                 <td>{{proyecto.categoria}}</td>
                                 <td>{{proyecto.generacion}}</td>
                                 <td>{{proyecto.asignatura}}</td>
                                 <td>{{proyecto.estatus}}</td>
-                                <td>{{proyecto.f_publicacion}}</td>
+                                <td>{{proyecto.fecha_publicacion}}</td>
                                 <td>{{proyecto.resumenes}}</td>
-                                <td>{{proyecto.archivos}}</td>
+                                <td><a href="#"><i class="icol-cross"></i></a></td>
                                 <td class="da-icon-column">
                                     <a href="{% url 'u-app:editProyectos' proyecto.id %}"><i class="icol-pencil"></i></a>
                                     <a href="{% url 'u-app:elimProyectos' proyecto.id %}"><i class="icol-cross"></i></a>
