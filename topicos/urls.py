@@ -11,4 +11,4 @@ urlpatterns = patterns('',
     url(r'^app/busqueda/', include('apps.busqueda.urls', namespace='u-app-busqueda')),
 
 
-)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
