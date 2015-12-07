@@ -108,7 +108,7 @@ class proyecto(models.Model):
     estatus = models.BooleanField(default=True)
     f_publicacion = models.CharField( max_length=10)
     resumenes = models.CharField(max_length=500)
-    archivo = models.FileField()
+    archivo = models.FileField(upload_to="archivos/", null=True, blank=True)
 
     class Meta:
         ordering = ["titulo"]
@@ -117,3 +117,4 @@ class proyecto(models.Model):
     def __unicode__(self):  # __unicode__ en Python 2
         return '%s' % (self.titulo)
         # //////////////////////////////////////////////////////////////
+ 
