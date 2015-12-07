@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
-<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="es"> <![endif]-->
-<!--[if IE 8]>    <html class="lt-ie9" lang="es"> <![endif]-->
-<!--[if gt IE 8]><!--><html lang="es"><!--<![endif]-->
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="es-MX"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="es-MX"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="es-MX"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="es-MX"><!--<![endif]-->
+
 <head>
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+
+
 {% load staticfiles %}
 <!-- Bootstrap Stylesheet -->
-<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}" media="screen">
+<link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css"%}" media="screen">
+
 <!-- Theme Stylesheet -->
-<link rel="stylesheet" href="{% static 'assets/css/dandelion.theme.css'%}" media="screen">
-<!--  Fluid Grid System -->
-<link rel="stylesheet" href="{% static "assets/css/fluid.css"%}" media="screen">
-<!-- Login Stylesheet -->
-<link rel="stylesheet" href="{% static "assets/css/form.css"%}" media="screen">
-<link rel="stylesheet" href="{% static "assets/css/login.css"%}" media="screen">
-<link rel="stylesheet" href="{% static "plugins/zocial/zocial.css"%}" media="screen">
+<link rel="stylesheet" href="{% static "assets/css/dandelion.theme.css"%}" media="screen">
 <!-- Icon Stylesheet -->
 <link rel="stylesheet" href="{% static "assets/css/fonts/glyphicons/style.css"%}" media="screen">
 <!--  Main Stylesheet -->
 <link rel="stylesheet" href="{% static "assets/css/dandelion.css"%}" media="screen">
 <!-- Demo Stylesheet -->
 <link rel="stylesheet" href="{% static "assets/css/demo.css"%}" media="screen">
+
 <!-- Plugin Stylesheet -->
 <link rel="stylesheet" href="{% static "assets/js/plugins/wizard/dandelion.wizard.css"%}" media="screen">
-<title>Sesion</title>
+<title>Inicio</title>
 </head>
 
 <body>
@@ -160,7 +159,7 @@
                     <!-- Content Area -->
                     <div id="da-content-area">
                         {% block centro %}
-                        <div class="da-container clearfix" style="position: absolute; top: 20%; left:30% ">
+                        <div class="da-container clearfix" style="text-align: center; top: 50%;">
                             <img src="{% static "imagenes/logo.png"%}">
                         </div>
                         {% endblock centro%}
@@ -203,13 +202,64 @@
     </div>
 {% endif %}
 	
-    <!-- JS Libs -->
+   <!-- JS Libs -->
     <script src="{% static "assets/js/libs/jquery-1.8.3.min.js"%}"></script>
     <script src="{% static "assets/js/libs/jquery.placeholder.min.js"%}"></script>
-    <script src="{% static "plugins/validate/jquery.validate.min.js"%}"></script>
-    <!-- JS Login -->
-    <script src="{% static "assets/js/core/dandelion.login.js"%}"></script>
+    <script src="{% static "assets/js/libs/jquery.mousewheel.min.js"%}"></script>
+
+    <!-- JS Bootstrap -->
+    <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
+
+    <!-- jQuery-UI JavaScript Files -->
+    <script src="{% static "assets/jui/js/jquery-ui-1.9.2.min.js"%}"></script>
+    <script src="{% static "assets/jui/jquery.ui.timepicker.min.js"%}"></script>
+    <script src="{% static "assets/jui/jquery.ui.touch-punch.min.js"%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/jui/css/jquery.ui.all.css"%}" media="screen">
+
+    <link rel="stylesheet" href="{% static "plugins/elrte/css/elrte.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "plugins/elfinder/css/elfinder.css" %}" media="screen">
+
+    <!-- JS Plugins -->
+
+    <!-- Validation Plugin -->
+    <script src="{% static "plugins/validate/jquery.validate.js"%}"></script>
+    <script src="{% static "plugins/validate/jquery.validate.min.js" %}"></script>
+
+    <!-- Flot Plugin -->
+    <!--[if lt IE 9]>
+    <script src="{% static "assets/js/libs/excanvas.min.js" %}"></script>
+    <![endif]-->
+    <script src="{% static "plugins/flot/jquery.flot.min.js" %}"></script>
+    <script src="{% static "plugins/flot/plugins/jquery.flot.tooltip.min.js" %}"></script>
+    <script src="{% static "plugins/flot/plugins/jquery.flot.resize.min.js" %}"></script>
+
+    <!-- Circular Stat Plugin -->
+    <script src="{% static "assets/js/plugins/circularstat/dandelion.circularstat.min.js" %}"></script>
+
+    <!-- jGrowl Plugin -->
+    <script src="{% static "plugins/jgrowl/jquery.jgrowl.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "plugins/jgrowl/jquery.jgrowl.css" %}" media="screen">
+
+
+    <!-- Wizard Plugin -->
+    <script src="{% static "assets/js/plugins/wizard/dandelion.wizard.min.js" %}"></script>
+    <script src="{% static "assets/js/libs/jquery.form.min.js" %}"></script>
+
+    <!-- Fullcalendar Plugin -->
+    <script src="{% static "plugins/fullcalendar/fullcalendar.min.js" %}"></script>
+    <script src="{% static "plugins/fullcalendar/gcal.js" %}"></script>
+    <link rel="stylesheet" href="{% static "plugins/fullcalendar/fullcalendar.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "plugins/fullcalendar/fullcalendar.print.css" %}" media="print">
+
+    <!-- JS Demo -->
+    <script src="{% static "assets/js/demo/demo.dashboard.js" %}"></script>
+    <script src="{% static "assets/js/demo/demo.ui.js" %}"></script>
+    <script src="{% static "assets/js/demo/demo.validation.js"%}"></script>
+
     <!-- JS Template -->
     <script src="{% static "assets/js/core/dandelion.core.js" %}"></script>
+
+    <!-- JS Customizer -->
+    <script src="{% static "assets/js/core/dandelion.customizer.js" %}"></script>
 </body>
 </html>
