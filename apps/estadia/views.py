@@ -4,6 +4,11 @@ from django.http import request, HttpResponseRedirect
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from .models import *
+from django.core.files import File
+from django.http import HttpResponse
+from StringIO import StringIO
+import os, mimetypes, urllib
+
 # from .forms import registroProeyecto
 
 
@@ -155,6 +160,13 @@ def upload_file(request):
 	else:
 		form = UploadFileForm()
 	return render_to_response('upload.html', {'form': form})
+
+def bajar_archivo(request):
+	header = proyecto.objects.order_by('?')[0]
+	archivo = StringIO(file(header.archivo.path, "rb").read())
+	mimetype = mimetypes.guess_type(os.path.basename(header.archivo.name))[0]
+
+	return HttpResponse(archivo.read(), mimetype=mimetype)
 
 
 class Proyectos(CreateView):

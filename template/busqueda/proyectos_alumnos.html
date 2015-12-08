@@ -1,26 +1,48 @@
-{% extends 'base_app.html' %}
+{% extends 'base.html' %}
 
 {% block centro %}
-    <table>
-        {% if alumno %}
-            {% for alumno in alumnos %}
-                {{ alumno.nombre }}
-            {% endfor %}
+{% load staticfiles %}
+<div class="da-container clearfix" style="text-align: center; top: 50%;">
+                            <img src="{% static "imagenes/logo.png"%}">
+                        </div>
+<div id="da-content-area" >
 
-        {% else %}
-            {% for dato in datosPro %}
-                {% for proyecto,alumno in dato.items %}
-                    <label>Nombre Proyecto:</label>
-                    {{ proyecto.titulo }} <br>
+<div  class="span12">
 
-                    {% for alum in alumno %}
-                        <label>Nombre Alumno</label>
-                        {{ alum.nombre }} <br>
-                    {% endfor %}
+<div class="da-panel-content da-table-container" >
+    <table class="da-table checkable">
+        <thead>
+        <tr>
+            <th>Nombre Proyecto</th>
+            <th>Nombre Alumno(s)</th>
+            <th>Asesor</th>
+            <th>Generación</th>
+            <th>Asignatura</th>
+            <th>Fecha Publicación</th>
+            <th>Resumen</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for dato in datosPro %}
+        {% for proyecto,alumno in dato.items %}
+        <tr>
+            <td>{{ proyecto.titulo }}</td>
+            <td>
+                {% for alum in alumno %}
+                {{ alum.nombre }} {{ alum.apellidos }} <br>
                 {% endfor %}
-            {% endfor %}
-        {% endif %}
+            </td>
+            <td>{{ proyecto.asesor }}</td>
+            <td>{{ proyecto.generacion }}</td>
+            <td>{{ proyecto.asignatura }}</td>
+            <td>{{ proyecto.fecha_publicacion }}</td>
+            <td>{{ proyecto.resumenes}}</td>
+        </tr>
+        {%endfor%}
+        {%endfor%}
+        </tbody>
     </table>
-
-
+</div>
+</div>
+    </div>
 {% endblock %}

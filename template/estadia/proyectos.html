@@ -63,7 +63,7 @@
                                 <td>{{proyecto.estatus}}</td>
                                 <td>{{proyecto.fecha_publicacion}}</td>
                                 <td>{{proyecto.resumenes}}</td>
-                                <td><a href="#"><i class="icol-cross"></i></a></td>
+                                <td><a href="{% url 'u-app:bajar_archivo' proyecto.id %}"><i class="icol-doc-pdf"></i></a></td>
                                 <td class="da-icon-column">
                                     <a href="{% url 'u-app:editProyectos' proyecto.id %}"><i class="icol-pencil"></i></a>
                                     <a href="{% url 'u-app:elimProyectos' proyecto.id %}"><i class="icol-cross"></i></a>

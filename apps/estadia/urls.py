@@ -29,5 +29,6 @@ urlpatterns = [
     url(r'^proyectos/lista$', listProyectos.as_view(), name='listProyectos'),
     url(r'^proyectos/editar/(?P<pk>\d+)$', EditProyectos.as_view(), name='editProyectos'),
     url(r'^proyectos/eliminar/(?P<pk>\d+)$', ElimProyectos.as_view(), name='elimProyectos'),
+    url(r'^proyectos/descargar/(?P<pk>\d+)$', bajar_archivo, name='bajar_archivo'),
 
 ]
